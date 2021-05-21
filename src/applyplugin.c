@@ -6,7 +6,11 @@
 /*****************************************************************************/
 
 #include <dlfcn.h>
+#if defined(__APPLE__)
+#include <machine/endian.h>
+#else
 #include <endian.h>
+#endif
 #include <errno.h>
 #include <math.h>
 #include <stdlib.h>

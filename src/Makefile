@@ -17,7 +17,7 @@ INCLUDES	=	-I.
 LIBRARIES	=	-ldl -lm
 CFLAGS		=	$(INCLUDES) -Wall -Werror -O2 -fPIC 		\
 			-DDEFAULT_LADSPA_PATH=$(INSTALL_PLUGINS_DIR)
-BINFLAGS	=	-fPIE -pie
+BINFLAGS	=	-fPIE
 CXXFLAGS	=	$(CFLAGS)
 PLUGINS		=	../plugins/amp.so				\
 			../plugins/delay.so				\
@@ -44,7 +44,7 @@ CPP		=	c++
 		-fvisibility=hidden					\
 		-fvisibility-inlines-hidden				\
 		-s							\
-		-Wl,--version-script=gcc_exports.map			
+		-Wl
 
 ../plugins/%.so:	plugins/%.cpp ladspa.h gcc_exports.map
 	$(CPP) $(CXXFLAGS) -o plugins/$*.o -c plugins/$*.cpp
@@ -55,7 +55,7 @@ CPP		=	c++
 		-fvisibility=hidden					\
 		-fvisibility-inlines-hidden				\
 		-s							\
-		-Wl,--version-script=gcc_exports.map			
+		-Wl
 
 ###############################################################################
 #
